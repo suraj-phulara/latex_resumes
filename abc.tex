@@ -1,107 +1,109 @@
-\documentclass{article}
-\usepackage{enumitem}
-\usepackage[left=0.5in,right=0.5in,top=0.5in,bottom=0.5in]{geometry}
-\usepackage{fontawesome}
-\usepackage{xcolor}
-\usepackage{titlesec}
+\documentclass[a4paper,10pt]{article}
+%-----------------------------------------------------------
+\usepackage[top=0.75in, bottom=0.75in, left=0.55in, right=0.85in]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{palatino}
+\usepackage{tabularx}
+\fontfamily{SansSerif}
+\selectfont
 
-\titleformat{\section}[hang]{\Large\bfseries}{}{0em}{}[]
-\titlespacing*{\section}{0pt}{*1.5}{*1.5}
-\titlespacing*{\subsection}{0pt}{*1.2}{*1.2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{color}
+\definecolor{mygrey}{gray}{0.75}
+\textheight=9.75in
+\raggedbottom
+
+\setlength{\tabcolsep}{0in}
+\newcommand{\isep}{-2 pt}
+\newcommand{\lsep}{-0.5cm}
+\newcommand{\psep}{-0.6cm}
+\renewcommand{\labelitemii}{$\circ$}
+
+\pagestyle{empty}
+%-----------------------------------------------------------
+%Custom commands
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+\newcommand{\resheading}[1]{{\small \colorbox{mygrey}{\begin{minipage}{0.975\textwidth}{\textbf{#1 \vphantom{p\^{E}}}}\end{minipage}}}}
+\newcommand{\ressubheading}[3]{
+\begin{tabular*}{6.62in}{l @{\extracolsep{\fill}} r}
+	\textsc{{\textbf{#1}}} & \textsc{\textit{[#2]}} \\
+\end{tabular*}\vspace{-8pt}}
+%-----------------------------------------------------------
 
 \begin{document}
+\hspace{0.5cm}\\[-0.2cm]
 
-\begin{center}
-\textbf{\Huge{Shubham Pandey}}\\
-\textit{Data Scientist}\\[5pt]
-\begin{minipage}[t]{0.5\textwidth}
-\begin{flushleft}
-\faEnvelope\hspace{2pt}shubham.py309@gmail.com\\
-\faPhone\hspace{2pt}+91-9761283388\\
-\href{https://www.linkedin.com/in/sp309/}{https://www.linkedin.com/in/sp309/}
-\end{flushleft}
-\end{minipage}
-\begin{minipage}[t]{0.5\textwidth}
-\begin{flushright}
-Greater Noida, IN\\
-\end{flushright}
-\end{minipage}
-\end{center}
+\textbf{ {{ basics.name }} } \\
+\indent Email-id : \textbf{ \url{ {{ basics.email }} } } \\
+\indent Mobile No.: \textbf{ {{ basics.phone }} } \\
+\indent \textbf{ \url{ {{ basics.profiles[0].url }} } } \\
 
-\section{Work Experience}
-\subsection{Psyber Incorporation - Data Scientist}
-\textit{ | 2022-09-01 -- 2022-12-01}\\
-\textbf{Developed predictive models and algorithms to identify promising exploration sites. Collaborated with a cross-functional team of engineers, and machine learning specialists to integrate data-driven insights into practical exploration strategies. Presented findings and recommendations to technical and non-technical stakeholders to guide exploration decisions.}\\
-\textbf{Highlights:}
+\resheading{\textbf{ACADEMIC DETAILS} }\\[\lsep]
+\\
+%\begin{table}[ht!]
+%\begin{center}
+\indent \rule{6.8in}{0.4pt}\\
+\indent \begin{tabular}{ l @{\hskip 0.15in} l @{\hskip 0.15in} l @{\hskip 0.15in} l @{\hskip 0.15in} }
+\noindent \textbf{Year} & \textbf{Degree/Exam} & \textbf{Institute} & \textbf{GPA/Marks(\%)}\\
+{% for edu in education %}
+{{ edu.startDate }} - {{ edu.endDate }} & {{ edu.studyType }} in {{ edu.area }} & {{ edu.institution }} & {{ edu.score }} \\
+{% endfor %}
+\end{tabular}
+\indent \rule{6.8in}{0.4pt}
+%\end{center}
+%\end{table}
+\\
+
+\resheading{\textbf{IIT DELHI THESIS} }\\[\lsep]
 \begin{itemize}
-\item Developed predictive models
-\item Collaborated with cross-functional team
-\item Presented findings to stakeholders
+\setlength\itemsep{0.5em}
+{% for thesis in iit_thesis %}
+\item \textbf{Title - }{{ thesis.title }}
+\item \textbf{Supervisor - }{{ thesis.supervisor }}
+\item \textbf{Description - }{{ thesis.description }}
+{% endfor %}
 \end{itemize}
 
-\subsection{Isoftra Digital Private Limited - Software Developer}
-\textit{ | 2022-03-01 -- 2022-05-01}\\
-\textbf{Utilized Laravel, HTML, CSS, and JavaScript technologies to develop software applications. Worked with the software programming team to gain insight into the company's operations. Coordinated with the team to successfully deliver desired products.}\\
-\textbf{Highlights:}
+\resheading{\textbf{INTERNSHIPS} }\\[\lsep]
 \begin{itemize}
-\item Utilized Laravel, HTML, CSS, and JavaScript
-\item Coordinated with team
+\setlength\itemsep{0.5em}
+{% for internship in internships %}
+\item \textbf{ {{ internship.title }}, {{ internship.company }} ({{ internship.startDate }} - {{ internship.endDate }}) : } {{ internship.description }}
+{% endfor %}
 \end{itemize}
 
-\subsection{Impressico Business Solutions - Trainee Engineer}
-\textit{ | 2023-10-01 -- 2023-12-01}\\
-\textbf{Gained hands-on experience in Generative AI, LLM (Large Language Models), deep learning, Flask, Streamlit, LangChain, Neural Networks, and related technologies. Collaborated with the engineering team to develop innovative solutions and contribute to ongoing projects.}\\
-\textbf{Highlights:}
+\resheading{\textbf{PROJECTS} }\\[\lsep]
 \begin{itemize}
-\item Gained hands-on experience in various technologies
-\item Collaborated with engineering team
+\setlength\itemsep{0.5em}
+{% for project in projects %}
+\item \textbf{ {{ project.title }} } ({{ project.startDate }} - {{ project.endDate }}) : {{ project.description }}
+{% endfor %}
 \end{itemize}
 
-\section{Education}
-\subsection{B.Tech in ECE at Birla Institute of Applied Sciences, Bhimtal, Uttarakhand}
-\textit{2019-08-01 -- 2023-07-01}\\
-\textbf{Score:} 76.18 (Honors)\\
+\resheading{\textbf{TECHNICAL SKILLS} }\\[\lsep]
+\begin{itemize}
+\setlength\itemsep{0em}
+\item \noindent \textbf{Languages} {% for skill in skills %}{% if not loop.first %}, {% endif %}\textbf{ {{ skill.name }} } {% endfor %}\\
+ \item \noindent\textbf{Tools and Frameworks} {% for tool in tools %}{% if not loop.first %}, {% endif %}{{ tool }} {% endfor %}\\
+\item \noindent \textbf{Machine Learning Tools} {% for ml_tool in ml_tools %}{% if not loop.first %}, {% endif %}\textbf{ {{ ml_tool }} } {% endfor %}
+\end{itemize}
 
-\subsection{12th in  at Doon Public Senior Secondary School, Haldwani, Uttarakhand}
-\textit{2019 -- 2019}\\
-\textbf{Score:} 82.4\\
+\resheading{\textbf{SCHOLASTIC ACHIEVEMENTS} }\\[\lsep]
+\begin{itemize}
+\setlength\itemsep{0em}
+{% for achievement in achievements %}
+\item \noindent \textbf{ {{ achievement.title }} - } {{ achievement.description }}
+{% endfor %}
+\end{itemize}
 
-\subsection{10th in  at Doon Public Senior Secondary School, Haldwani, Uttarakhand}
-\textit{2017 -- 2017}\\
-\textbf{Score:} 8.6\\
-
-\section{Skills}
-\textbf{Data Analysis:} 
-
-\textbf{Data Modeling:} 
-
-\textbf{Data Visualization:} 
-
-\textbf{Python:} 
-
-\textbf{LLM:} 
-
-\textbf{Generative AI:} 
-
-\textbf{Langchain:} 
-
-\textbf{Streamlit:} 
-
-\textbf{Deep Learning:} 
-
-\textbf{Machine Learning:} 
-
-\textbf{Problem-Solving:} 
-
-\textbf{Communication:} 
-
-\textbf{Teamwork:} 
-
-\section{Certifications}
-\subsection{AWS Cloud Quest for Cloud Practitioner}
-
-\subsection{Diplôme d'Etudes en Langue Française A1 LEVEL}
-
-\subsection{Data Analysis with Python}
-
+\resheading{\textbf{POSITIONS OF RESPONSIBILITY} }\\[\lsep]
+\begin{itemize}
+\setlength\itemsep{0em}
+{% for responsibility in responsibilities %}
+\item \noindent \textbf{ {{ responsibility.title }} } : {{ responsibility.description }}
+{% endfor %}
+\end{itemize}
 \end{document}
