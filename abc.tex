@@ -1,374 +1,205 @@
-%---------------------------------------------------------------------------------------------------
-%
-%	Edited by: Copyright (c) 2016 Jakub Kúdela
-%   Based on: Copyright (c) 2015 Jan Küster
-%
-%	The MIT License (MIT)
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%
-%---------------------------------------------------------------------------------------------------
-
-
-%===================================================================================================
-%	DOCUMENT DEFINITION
-%===================================================================================================
-
-%we use article class because we want to fully customize the page and dont use a cv template
-\documentclass[10pt,a4paper]{article}	
-
-%---------------------------------------------------------------------------------------------------
-%	ENCODING
-%---------------------------------------------------------------------------------------------------
-
-%we use utf8 since we want to build from any machine
-\usepackage[utf8]{inputenc}		
-
-%---------------------------------------------------------------------------------------------------
-%	LOGIC
-%---------------------------------------------------------------------------------------------------
-
-% provides \isempty test
-\usepackage{xifthen}
-
-%---------------------------------------------------------------------------------------------------
-%	FONT
-%---------------------------------------------------------------------------------------------------
-
-% some tex-live fonts - choose your own
-
-%\usepackage[defaultsans]{droidsans}
-%\usepackage[default]{comfortaa}
-%\usepackage{cmbright}
-\usepackage[default]{raleway}
-%\usepackage{fetamont}
-%\usepackage[default]{gillius}
-%\usepackage[light,math]{iwona}
-%\usepackage[thin]{roboto}
-\usepackage{hyperref}
-
-% set font default
-\renewcommand*\familydefault{\sfdefault} 	
-\usepackage[T1]{fontenc}
-
-% more font size definitions
-\usepackage{moresize}		
-
-%---------------------------------------------------------------------------------------------------
-%	PAGE LAYOUT  DEFINITIONS
-%---------------------------------------------------------------------------------------------------
-
-%debug page outer frames
-%\usepackage{showframe}			
-
-%define page styles using geometry
-\usepackage[a4paper]{geometry}		
-
-% for example, change the margins to 2 inches all round
-\geometry{top=1.75cm, bottom=-.6cm, left=1.5cm, right=1.5cm} 	
-
-%use customized header
-\usepackage{fancyhdr}		
-\pagestyle{fancy}
-
-%less space between header and content
-\setlength{\headheight}{-5pt}		
-
-%customize entries left, center and right
-\lhead{}
-\chead{\small{
-  John Doe $\cdot$ 
-  Software Developer $\cdot$ 
-  Prague, Czech Republic $\cdot$ 
-  \textcolor{sectcol}{\textbf{\href
-  {mailto:john.doe@gmail.com}
-  {john.doe@gmail.com}}} $\cdot$
-  +420 123 456 789
-}}
-\rhead{}
-
-%indentation is zero
-\setlength{\parindent}{0mm}
-
-%---------------------------------------------------------------------------------------------------
-%	TABLE /ARRAY DEFINITIONS
-%--------------------------------------------------------------------------------------------------- 
-
-%for layouting tables
-\usepackage{multicol}			
-\usepackage{multirow}
-
-%extended aligning of tabular cells
+\documentclass[14pt, a4paper]{extarticle}
+%\usepackage{graphicx}
 \usepackage{array}
-\newcolumntype{x}[1]{>{\raggedleft\hspace{0pt}}p{#1}}
-
-%---------------------------------------------------------------------------------------------------
-%	GRAPHICS DEFINITIONS
-%--------------------------------------------------------------------------------------------------- 
-
-%for header image
-\usepackage{graphicx}
-
-%for floating figures
-\usepackage{wrapfig}
-\usepackage{float}
-%\floatstyle{boxed} 
-%\restylefloat{figure}
-
-%for drawing graphics		
-\usepackage{tikz}				
-\usetikzlibrary{shapes, backgrounds,mindmap, trees}
-
-%---------------------------------------------------------------------------------------------------
-%	Color DEFINITIONS
-%--------------------------------------------------------------------------------------------------- 
-
+\usepackage{ulem}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
 \usepackage{color}
 
-%accent color
-\definecolor{sectcol}{RGB}{90,90,120}
+\usepackage[section]{placeins}
 
-%dark background color
-\definecolor{bgcol}{RGB}{110,110,110}
+\usepackage{times}
+\usepackage[top=2cm, bottom=2cm, left=3cm, right=1.5cm]{geometry}
+% PDF Search & cut'n'paste
+\usepackage{cmap}
 
-%light background / accent color
-\definecolor{softcol}{RGB}{225,225,225}
+% Indent the first paragraph as well
+\usepackage{indentfirst}
 
-%===================================================================================================
-%	DEFINITIONS
-%===================================================================================================
+% According to GOST, sections should be called chapters in diploma
+\usepackage{titlesec}
 
-%---------------------------------------------------------------------------------------------------
-% 	HEADER
-%---------------------------------------------------------------------------------------------------
+% Detect whether PDFLaTeX is in use
+\usepackage{ifpdf}
 
-% remove top header line
-\renewcommand{\headrulewidth}{0pt} 
+% Graphics
+\ifpdf
+    \usepackage[pdftex]{graphicx}
+\else
+    \usepackage{graphicx}
+\fi
 
-%remove botttom header line
-\renewcommand{\footrulewidth}{0pt}	  	
+% Hyperlinks
+\ifpdf
+        \usepackage[pdftex]{hyperref}
+\else
+        \usepackage{hyperref}
+\fi
 
-%remove pagenum
-\renewcommand{\thepage}{}	
-
-%remove section num		
-\renewcommand{\thesection}{}			
-
-%---------------------------------------------------------------------------------------------------
-% 	ARROW GRAPHICS in Tikz
-%---------------------------------------------------------------------------------------------------
-
-% a six pointed arrow poiting to the left
-\newcommand{\tzlarrow}{(0,0) -- (0.2,0) -- (0.3,0.2) -- (0.2,0.4) -- (0,0.4) -- (0.1,0.2) -- cycle;}	
-
-% include the left arrow into a tikz picture
-% param1: fill color
-%
-\newcommand{\larrow}[1]{
-  \begin{tikzpicture}[scale=0.58]
-    \filldraw[fill=#1!100,draw=#1!100!black]  \tzlarrow
-  \end{tikzpicture}
+\hypersetup{
+        unicode=true,
+        pdftitle={
+        },
+        pdfauthor={},
+        pdfkeywords={
+        },
+        colorlinks,
+        citecolor=black,
+        filecolor=black,
+        linkcolor=black,
+        urlcolor=blue
 }
 
-% a six pointed arrow poiting to the right
-\newcommand{\tzrarrow}{ (0,0.2) -- (0.1,0) -- (0.3,0) -- (0.2,0.2) -- (0.3,0.4) -- (0.1,0.4) -- cycle;}
+% Russian-styled figure and table captions
+\usepackage[labelsep=period]{caption}
+% This declaration makes TeX less fussy about line breaking. This can
+% prevent overfull boxes, but may leave too much space between words.
+% As this really isn't a fine art typography, we'll turn it on, so
+% we won't have paragraphs which spans on the margins...
+\sloppy
 
-% include the right arrow into a tikz picture
-% param1: fill color
-%
-\newcommand{\rarrow}{
-  \begin{tikzpicture}[scale=0.7]
-    \filldraw[fill=sectcol!100,draw=sectcol!100!black] \tzrarrow
-  \end{tikzpicture}
+% Page numbering at the right topmost part of the page
+% \pagestyle{myheadings}
+
+\usepackage{listings}
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\graphicspath{{./images/}}
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
 }
-%---------------------------------------------------------------------------------------------------
-%	custom sections
-%---------------------------------------------------------------------------------------------------
-
-% create a coloured box with arrow and title as cv section headline
-% param 1: section title
-%
-\newcommand{\cvsection}[1]{
-  \vspace{10pt}
-  \colorbox{sectcol}{\mystrut \makebox[1\linewidth][l]{
-    \larrow{bgcol} \hspace{-8pt} \larrow{bgcol} \hspace{-8pt} 
-    \larrow{bgcol}\textcolor{white}{\textbf{#1}}\hspace{4pt}
-  }}\\
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
 }
+\linespread{1.5}
 
-%create a coloured arrow with title as cv meta section section
-% param 1: meta section title
+%% TODO Нормальная титульная страница
+\author{Андрей Лушников}
+\title{Разработка и реализация алгоритмов деформирования трехмерной геометрии
+анатомии человека на основе WebGL}
+\date{Апрель 2012 год}
+
+%% ==========================================================
+%          _____ _______  _______
+%         |_   _| ____\ \/ /_   _|
+%           | | |  _|  \  /  | |
+%           | | | |___ /  \  | |
+%           |_| |_____/_/\_\ |_|
 %
-\newcommand{\metasection}[2]{
-  \begin{tabular*}{1\textwidth}{p{2.4cm} p{11cm}}
-    \larrow{bgcol} \normalsize{\textcolor{sectcol}{#1}}&#2\\[10pt]
-  \end{tabular*}
-}
-
-%---------------------------------------------------------------------------------------------------
-%	 CV EVENT
-%---------------------------------------------------------------------------------------------------
-
-% creates a stretched box as cv entry headline followed by two paragraphs
-% param 1:	event time i.e. 2014 or 2011-2014 etc.
-% param 2:	event name (what did you do?)
-% param 3:	institution (where did you work / study)
-%
-\newcommand{\cvevent}[3]{
-  \begin{tabular*}{1\textwidth}{p{2.5cm} p{10.5cm} x {4.0cm}}
-    \textcolor{bgcol}{#1} & \textbf{#2} & \vspace{2.5pt}\textcolor{sectcol}{#3}
-  \end{tabular*}
-  \vspace{-10pt}
-  \textcolor{softcol}{\hrule}
-  \vspace{10pt}
-}
-
-% creates a stretched box as cv entry detail 
-% param 1:	information describing the event
-%
-\newcommand{\cvdetail}[1]{
-  \begin{tabular*}{1\textwidth}{p{2.5cm} p{14.5cm}}
-    & \larrow{bgcol}  #1\\ [3pt]
-  \end{tabular*}
-}
-
-%---------------------------------------------------------------------------------------------------
-% CUSTOM STRUT FOR EMPTY BOXES
-%---------------------------------------------------------------------------------------------------
-\newcommand{\mystrut}{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
-
-%===================================================================================================
-%	DOCUMENT CONTENT
-%===================================================================================================
-\title{resume}
+%% ==========================================================
 \begin{document}
 
-% use our custom fancy header definitions
-\pagestyle{fancy}	
+%\maketitle
+\include{title}
+\include{title-en}
 
-%---------------------------------------------------------------------------------------------------
-%	TITLE HEADLINE
-%---------------------------------------------------------------------------------------------------
+\setcounter{page}{1}
+\tableofcontents
+\newpage
 
-\vspace{-20pt}
+\include{intro}
 
-% use this for single words, e.g. CV or RESUME etc.
-\hspace{-0.25\linewidth}\colorbox{bgcol}{
-  \makebox[1.5\linewidth][c]{
-    \HUGE{\textcolor{white}{\textsc{John Doe}}} 
-    \textcolor{sectcol}{\rule[-1mm]{1mm}{0.9cm}} 
-    \HUGE{\textcolor{white}{\textsc{Resume}}}
-  }
-}
+\include{architecture-1}
 
-%---------------------------------------------------------------------------------------------------
-%	HEADER IMAGE
-%---------------------------------------------------------------------------------------------------
+\include{impl}
 
-\begin{figure}[H]
-\begin{flushright}
-  \includegraphics[width=0.2\linewidth]{photo.jpg}
-\end{flushright}
-\end{figure}
+\include{algo}
 
-%---------------------------------------------------------------------------------------------------
-%	META SECTION
-%---------------------------------------------------------------------------------------------------
+\include{testing-algos}
 
-\vspace{-115pt}
+\include{architecture-2}
 
-\metasection{Status:}{Developer at The Company, M.Sc. in Computer Science}
-\metasection{Skills:}{Java, C\#/.Net, C++, Python, JavaScript, Ruby, Bash, SQL} 
-\metasection{Interests:}{Data Warehouses, Data Lakes, Data Analysis, Data Quality}
-\metasection{Activities:}{Hockey, Football, Tennis, Basketball, Reading, Music}
+\include{testing-rc}
 
-%---------------------------------------------------------------------------------------------------
-%	SUMMARAY (optional)
-%---------------------------------------------------------------------------------------------------
+\include{mirror}
 
-\cvsection{Summary}
+\include{outro}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque gravida ligula sed rhoncus lobortis. Pellentesque sit amet sapien in neque cursus mollis. Nulla aliquet mauris ac enim fermentum tincidunt. Donec eu felis ut purus ullamcorper aliquet eget at lorem. Suspendisse vulputate mi libero, sit amet sollicitudin enim suscipit in. Curabitur laoreet sem ultrices, consequat neque sed, vulputate purus. Sed in.
+\begin{thebibliography}{9}
 
-%===================================================================================================
-%	CV SECTIONS AND EVENTS (MAIN CONTENT)
-%===================================================================================================
+\bibitem{webgl}
+  Спецификация WebGL \\
+  \emph{http://www.khronos.org/webgl}.
 
-%---------------------------------------------------------------------------------------------------
-%	EXPERIENCE
-%---------------------------------------------------------------------------------------------------
-\cvsection{Experience}
+\bibitem{nodejs}
+  Официальный сайт Node.js \\
+  \emph{http://nodejs.org/}
 
-\cvevent{'16/01 - now}{Developer}{The Company}
-\cvdetail{Proin laoreet dolor vitae velit tristique, id interdum augue finibus quisque non ades}
-\cvdetail{Erat at purus facilisis vestibulum pulvinar sit amet felis, mauris laoreet justo nec err in}
-\cvdetail{Lorem consectetur elementum, aliquam facilisis ante id magna porta mattis, vivamus}
-\cvdetail{Morbi sit amet ullamcorper felis fusce nec mi ac nisi cursus aliquet, vestibulum volutpat}
-\cvdetail{Vestibulum quam lectus, tempus in urna semper, finibus consequat mauris, quisque}
+\bibitem{expressjs}
+  Официальный сайт Express.js \\
+  \emph{http://expressjs.com/}
 
-\cvevent{'15/01 - '15/12}{Developer}{The Older Company}
-\cvdetail{Praesent aliquam sagittis hendrerit phasellus efficitur tincidunt et (\href{https://google.com}{https://google.com})}
-\cvdetail{Amet eget augue nam quis sapien eget arcu placerat lobortis vivamus maximus elit id}
-\cvdetail{Eget lacus nec dolor sagittis efficitur aliquam nec metus vitae justo auctor sit erat arr}
-\cvdetail{Condimentum vestibulum, nullam vitae cursus erat, praesent hendrerit leo a turpis}
+\bibitem{threejs}
+  Официальный репозиторий Three.js \\
+  \emph{https://github.com/mrdoob/three.js/}
 
+\bibitem{thrift}
+  Официальный сайт Apache Thrift \\
+  \emph{http://thrift.apache.org/}
 
-\cvevent{'14/01 - '14/12}{Intern}{The Oldest Company}
-\cvdetail{Quisque in lacus lorem. In vitae feugiat leo mauris a hendrerit felis fusce mi mattis}
-\cvdetail{Viverra ut sem non, commodo dictum leo nullam pulvinar mattis nisi quis iaculis ex}
-\cvdetail{Nulla finibus leo lectus, sed feugiat arcu ultrices non. Aenean sit amet vestibulum sit}
-\cvdetail{Lorem sed diam purus, aliquam ac diam feugiat, volutpat lobortis ex cras nec sem}
+\bibitem{nodethriftpatch}
+  Ветка проекта node-thrift с исправленной ошибкой \\
+  \emph{https://github.com/aslushnikov/node-thrift}
 
-%---------------------------------------------------------------------------------------------------
-%	EDUCATION SECTION
-%---------------------------------------------------------------------------------------------------
-\cvsection{Education}
+\bibitem{jade}
+  Официальный сайт Jade \\
+  \emph{http://jade-lang.com/}
 
-\cvevent{2013 - 2016}{Master's Degree, Computer Science}{The University}
-\cvdetail{Thesis: Vestibulum Vel Lorem Ex Duis Varius Lorem Iaculis Laoreet Fringilla Nam Ex}
-\cvdetail{Dignissim malesuada vestibulum sed eget elit justo aliquam eu arcu a dui interdum eget}
-\cvdetail{Donec mattis, purus vel pellentesque maximus tellus arcu tempus elit, ut sodales felis}
-\cvdetail{Elementum mauris arcu felis, sodales et maximus in, pretium maximus urna praesent}
+\bibitem{jquery}
+  Официальный сайт JQuery \\
+  \emph{http://jquery.com/}
 
-\cvevent{2009 - 2013}{Bachelor's Degree, Computer Science}{The University}
-\cvdetail{Thesis: Duis Molestie Faucibus Ligula, Sed Suscipit Tellus Tempor Sed Maecenas Li}
-\cvdetail{Accumsan ligula at feugiat donec gravida, odio ac sodales consectetur, quam metus}
-\cvdetail{Molestie mi, nec cursus sem leo sit amet sapien proin feugiat efficitur suscipit duis}
+\bibitem{jqueryform}
+  Описание проекта JQuery Form \\
+  \emph{http://jquery.malsup.com/form/}
 
-%---------------------------------------------------------------------------------------------------
-%	ARTIFICIAL FOOTER (fancy footer cannot exceed linewidth) 
-%---------------------------------------------------------------------------------------------------
+\bibitem{underscore}
+  Официальный сайт Underscore \\
+  \emph{http://documentcloud.github.com/underscore/}
 
-\null
-\vspace*{\fill}
-\hspace{-0.25\linewidth}\colorbox{bgcol}{
-  \makebox[1.5\linewidth][c]{
-    \mystrut \small 
-    \textcolor{white}{
-      \href{https:/www.linkedin.com/in/john-doe}
-      {https:/www.linkedin.com/in/john-doe}
-    } $\cdot$ 
-    \textcolor{white}{
-      \href{https://github.com/john-doe}
-      {https://github.com/john-doe}
-    }
-  }
-}
+\bibitem{webgl-shaders}
+  Введение в WebGL. Шейдеры. \\
+  \emph{http://learningwebgl.com/blog/?p=28}
 
-%===================================================================================================
-%	DOCUMENT END
-%===================================================================================================
+\bibitem{observer}
+  Шаблон проектирования Observer \\
+  \emph{http://en.wikipedia.org/wiki/Observer\_pattern}
+
+\bibitem{strategy}
+  Шаблон проектирования Strategy \\
+  \emph{http://en.wikipedia.org/wiki/Strategy\_pattern}
+
+\bibitem{http10}
+  Методы HTTP 1.0 \\
+  \emph{http://www.w3.org/Protocols/HTTP/1.0/draft-ietf-http-spec.html\#Methods }
+
+\end{thebibliography}
+
 \end{document}
