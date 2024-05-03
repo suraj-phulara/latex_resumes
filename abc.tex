@@ -1,205 +1,92 @@
-\documentclass[14pt, a4paper]{extarticle}
-%\usepackage{graphicx}
-\usepackage{array}
-\usepackage{ulem}
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[english,russian]{babel}
-\usepackage{color}
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{enumitem}
 
-\usepackage[section]{placeins}
-
-\usepackage{times}
-\usepackage[top=2cm, bottom=2cm, left=3cm, right=1.5cm]{geometry}
-% PDF Search & cut'n'paste
-\usepackage{cmap}
-
-% Indent the first paragraph as well
-\usepackage{indentfirst}
-
-% According to GOST, sections should be called chapters in diploma
-\usepackage{titlesec}
-
-% Detect whether PDFLaTeX is in use
-\usepackage{ifpdf}
-
-% Graphics
-\ifpdf
-    \usepackage[pdftex]{graphicx}
-\else
-    \usepackage{graphicx}
-\fi
-
-% Hyperlinks
-\ifpdf
-        \usepackage[pdftex]{hyperref}
-\else
-        \usepackage{hyperref}
-\fi
-
-\hypersetup{
-        unicode=true,
-        pdftitle={
-        },
-        pdfauthor={},
-        pdfkeywords={
-        },
-        colorlinks,
-        citecolor=black,
-        filecolor=black,
-        linkcolor=black,
-        urlcolor=blue
-}
-
-% Russian-styled figure and table captions
-\usepackage[labelsep=period]{caption}
-% This declaration makes TeX less fussy about line breaking. This can
-% prevent overfull boxes, but may leave too much space between words.
-% As this really isn't a fine art typography, we'll turn it on, so
-% we won't have paragraphs which spans on the margins...
-\sloppy
-
-% Page numbering at the right topmost part of the page
-% \pagestyle{myheadings}
-
-\usepackage{listings}
-\let\stdsection\section
-\renewcommand\section{\newpage\stdsection}
-\definecolor{lightgray}{rgb}{.9,.9,.9}
-\definecolor{darkgray}{rgb}{.4,.4,.4}
-\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
-\graphicspath{{./images/}}
-\lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
-}
-\lstset{
-   language=JavaScript,
-   backgroundcolor=\color{lightgray},
-   extendedchars=true,
-   basicstyle=\footnotesize\ttfamily,
-   showstringspaces=false,
-   showspaces=false,
-   numbers=left,
-   numberstyle=\footnotesize,
-   numbersep=9pt,
-   tabsize=2,
-   breaklines=true,
-   showtabs=false,
-   captionpos=b
-}
-\linespread{1.5}
-
-%% TODO Нормальная титульная страница
-\author{Андрей Лушников}
-\title{Разработка и реализация алгоритмов деформирования трехмерной геометрии
-анатомии человека на основе WebGL}
-\date{Апрель 2012 год}
-
-%% ==========================================================
-%          _____ _______  _______
-%         |_   _| ____\ \/ /_   _|
-%           | | |  _|  \  /  | |
-%           | | | |___ /  \  | |
-%           |_| |_____/_/\_\ |_|
-%
-%% ==========================================================
 \begin{document}
 
-%\maketitle
-\include{title}
-\include{title-en}
+\title{Shubham Pandey}
+\author{Data Scientist}
+\date{}
+\maketitle
 
-\setcounter{page}{1}
-\tableofcontents
-\newpage
+\section{Contact Information}
+\begin{itemize}[label=]
+\item \textbf{Name:} Shubham Pandey
+\item \textbf{Label:} Data Scientist
+\item \textbf{Email:} shubham.py309@gmail.com
+\item \textbf{Phone:} +91-9761283388
+\item \textbf{Location:} Greater Noida, IN
+\end{itemize}
 
-\include{intro}
+\section{Work Experience}
+\subsection{Psyber Incorporation - Data Scientist}
+\textbf{Date:} 2022-09-01 to 2022-12-01
+\begin{itemize}[label=-]
+\item Developed predictive models and algorithms to identify promising exploration sites. Collaborated with a cross-functional team of engineers, and machine learning specialists to integrate data-driven insights into practical exploration strategies. Presented findings and recommendations to technical and non-technical stakeholders to guide exploration decisions.
+\item \textbf{Highlights:}
+\begin{itemize}[label=--]
+\item Developed predictive models
+\item Collaborated with cross-functional team
+\item Presented findings to stakeholders
+\end{itemize}
+\end{itemize}
 
-\include{architecture-1}
+\subsection{Isoftra Digital Private Limited - Software Developer}
+\textbf{Date:} 2022-03-01 to 2022-05-01
+\begin{itemize}[label=-]
+\item Utilized Laravel, HTML, CSS, and JavaScript technologies to develop software applications. Worked with the software programming team to gain insight into the company's operations. Coordinated with the team to successfully deliver desired products.
+\item \textbf{Highlights:}
+\begin{itemize}[label=--]
+\item Utilized Laravel, HTML, CSS, and JavaScript
+\item Coordinated with team
+\end{itemize}
+\end{itemize}
 
-\include{impl}
+\subsection{Impressico Business Solutions - Trainee Engineer}
+\textbf{Date:} 2023-10-01 to 2023-12-01
+\begin{itemize}[label=-]
+\item Gained hands-on experience in Generative AI, LLM (Large Language Models), deep learning, Flask, Streamlit, LangChain, Neural Networks, and related technologies. Collaborated with the engineering team to develop innovative solutions and contribute to ongoing projects.
+\item \textbf{Highlights:}
+\begin{itemize}[label=--]
+\item Gained hands-on experience in various technologies
+\item Collaborated with engineering team
+\end{itemize}
+\end{itemize}
 
-\include{algo}
+\section{Education}
+\subsection{B.Tech in ECE at Birla Institute of Applied Sciences, Bhimtal, Uttarakhand}
+\textbf{Date:} 2019-08-01 to 2023-07-01
+\begin{itemize}[label=-]
+\item \textbf{Score:} 76.18 (Honors)
+\end{itemize}
 
-\include{testing-algos}
+\subsection{12th in  at Doon Public Senior Secondary School, Haldwani, Uttarakhand}
+\textbf{Date:} 2019 to 2019
+\begin{itemize}[label=-]
+\item \textbf{Score:} 82.4
+\end{itemize}
 
-\include{architecture-2}
+\subsection{10th in  at Doon Public Senior Secondary School, Haldwani, Uttarakhand}
+\textbf{Date:} 2017 to 2017
+\begin{itemize}[label=-]
+\item \textbf{Score:} 8.6
+\end{itemize}
 
-\include{testing-rc}
-
-\include{mirror}
-
-\include{outro}
-
-\begin{thebibliography}{9}
-
-\bibitem{webgl}
-  Спецификация WebGL \\
-  \emph{http://www.khronos.org/webgl}.
-
-\bibitem{nodejs}
-  Официальный сайт Node.js \\
-  \emph{http://nodejs.org/}
-
-\bibitem{expressjs}
-  Официальный сайт Express.js \\
-  \emph{http://expressjs.com/}
-
-\bibitem{threejs}
-  Официальный репозиторий Three.js \\
-  \emph{https://github.com/mrdoob/three.js/}
-
-\bibitem{thrift}
-  Официальный сайт Apache Thrift \\
-  \emph{http://thrift.apache.org/}
-
-\bibitem{nodethriftpatch}
-  Ветка проекта node-thrift с исправленной ошибкой \\
-  \emph{https://github.com/aslushnikov/node-thrift}
-
-\bibitem{jade}
-  Официальный сайт Jade \\
-  \emph{http://jade-lang.com/}
-
-\bibitem{jquery}
-  Официальный сайт JQuery \\
-  \emph{http://jquery.com/}
-
-\bibitem{jqueryform}
-  Описание проекта JQuery Form \\
-  \emph{http://jquery.malsup.com/form/}
-
-\bibitem{underscore}
-  Официальный сайт Underscore \\
-  \emph{http://documentcloud.github.com/underscore/}
-
-\bibitem{webgl-shaders}
-  Введение в WebGL. Шейдеры. \\
-  \emph{http://learningwebgl.com/blog/?p=28}
-
-\bibitem{observer}
-  Шаблон проектирования Observer \\
-  \emph{http://en.wikipedia.org/wiki/Observer\_pattern}
-
-\bibitem{strategy}
-  Шаблон проектирования Strategy \\
-  \emph{http://en.wikipedia.org/wiki/Strategy\_pattern}
-
-\bibitem{http10}
-  Методы HTTP 1.0 \\
-  \emph{http://www.w3.org/Protocols/HTTP/1.0/draft-ietf-http-spec.html\#Methods }
-
-\end{thebibliography}
+\section{Skills}
+\begin{itemize}
+\item Data Analysis
+\item Data Modeling
+\item Data Visualization
+\item Python
+\item LLM
+\item Generative AI
+\item Langchain
+\item Streamlit
+\item Deep Learning
+\item Machine Learning
+\item Problem-Solving
+\item Communication
+\item Teamwork
+\end{itemize}
 
 \end{document}
